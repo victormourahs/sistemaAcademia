@@ -1,0 +1,615 @@
+/* styles/globals.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #0f0f14;
+  --bg-card: rgba(255, 255, 255, 0.06);
+  --fg: #edede8;
+  --muted: #9797a3;
+  --accent: #3355ff;
+  --accent-fg: #0b0b10;
+  --border: rgba(237, 237, 232, 0.14);
+  --border-strong: rgba(237, 237, 232, 0.3);
+  --danger: #ff5c5c;
+  --glass-blur: 16px;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ---------- Base ---------- */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--fg);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  background: var(--bg);
+
+  background-image:
+    radial-gradient(
+      circle at 15% 10%,
+      rgba(51, 85, 255, 0.25),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 85% 30%,
+      rgba(255, 92, 92, 0.12),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 50% 90%,
+      rgba(51, 85, 255, 0.15),
+      transparent 45%
+    );
+
+  background-attachment: fixed;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+/* ---------- Logo ---------- */
+
+.app-logo-texto {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--fg);
+
+  background: linear-gradient(
+    135deg,
+    var(--fg) 40%,
+    var(--muted)
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---------- Header / Footer ---------- */
+
+.app-header,
+.app-footer {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-bottom: 1px solid var(--border);
+}
+
+.app-header {
+  padding: 20px 24px;
+}
+
+.app-footer {
+  border-top: 1px solid var(--border);
+  border-bottom: none;
+  padding: 24px;
+
+  color: var(--muted);
+  font-size: 0.8rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.app-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+}
+
+.app-logo {
+  height: 28px;
+  width: auto;
+}
+
+.app-nome {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.app-footer a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.app-footer a:hover {
+  color: var(--fg);
+}
+
+/* ---------- Grids de cards ---------- */
+
+.lista-treinos,
+.lista-grupos,
+.lista-exercicios {
+  display: grid;
+
+  /*
+    O Grid controla automaticamente a quantidade
+    de cards por linha sem esmagar os elementos.
+  */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(160px, 1fr)
+  );
+
+  gap: 16px;
+  margin-top: 32px;
+}
+
+/* ---------- Cards ---------- */
+
+.treino-card,
+.grupo-card,
+.exercicio-card,
+.card-adicionar {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 140px;
+
+  background: var(--bg-card);
+
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+.treino-card:hover,
+.grupo-card:hover,
+.exercicio-card:hover {
+  border-color: var(--border-strong);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+/* ---------- Treinos ---------- */
+
+.treino-card h2,
+.grupo-card h2 {
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+}
+
+.treino-card p {
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-top: 6px;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Exercícios ---------- */
+
+.exercicio-card img,
+.grupo-imagem {
+  border-radius: 6px;
+  margin-bottom: 10px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.grupo-imagem {
+  height: 80px;
+}
+
+.exercicio-card h3 {
+  font-size: 0.85rem;
+  font-weight: 500;
+  font-family: var(--font-body);
+  line-height: 1.3;
+
+  padding-right: 24px;
+
+  overflow-wrap: anywhere;
+}
+
+.exercicio-card button {
+  margin-top: 12px;
+
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-strong);
+
+  color: var(--fg);
+
+  padding: 6px 12px;
+  border-radius: 6px;
+
+  font-size: 0.8rem;
+
+  align-self: flex-start;
+}
+
+.exercicio-card button:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-fg);
+}
+
+/* ---------- Card adicionar ---------- */
+
+.card-adicionar {
+  align-items: center;
+  justify-content: center;
+
+  border-style: dashed;
+
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.card-adicionar:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.card-adicionar span {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+/* ---------- Botão excluir ---------- */
+
+.botao-excluir {
+  position: absolute;
+
+  top: 8px;
+  right: 8px;
+
+  background: transparent;
+  border: none;
+
+  color: var(--muted);
+
+  font-size: 1.1rem;
+  line-height: 1;
+
+  padding: 4px;
+
+  z-index: 2;
+}
+
+.botao-excluir:hover {
+  color: var(--danger);
+}
+
+/* ---------- Modal ---------- */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(8, 8, 12, 0.6);
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 20;
+
+  padding: 24px;
+}
+
+.modal-criar-treino {
+  width: min(360px, 100%);
+
+  background: rgba(20, 20, 26, 0.95);
+
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+
+  padding: 32px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-criar-treino h2 {
+  font-size: 1.3rem;
+  margin-bottom: 24px;
+}
+
+.nomeTreino {
+  width: 100%;
+
+  background: transparent;
+
+  border: none;
+  border-bottom: 1px solid var(--border-strong);
+
+  color: var(--fg);
+
+  font-family: var(--font-body);
+  font-size: 1rem;
+
+  padding: 8px 0;
+
+  outline: none;
+}
+
+.modal-criar-treino .nomeTreino {
+  margin-bottom: 16px;
+}
+
+.modal-criar-treino .nomeTreino:last-of-type {
+  margin-bottom: 28px;
+}
+
+.nomeTreino:focus {
+  border-bottom-color: var(--accent);
+}
+
+.modal-criar-treino button:not(.botao-fechar) {
+  width: 100%;
+
+  background: var(--accent);
+  color: var(--accent-fg);
+
+  border: none;
+
+  padding: 12px;
+
+  border-radius: 6px;
+
+  font-weight: 600;
+  font-size: 0.95rem;
+
+  text-align: center;
+  align-self: center;
+}
+
+.botao-fechar {
+  background: rgba(255, 255, 255, 0.05);
+
+  border: 1px solid var(--border);
+
+  color: var(--fg);
+
+  font-size: 0.85rem;
+
+  padding: 8px 16px;
+
+  border-radius: 6px;
+
+  margin-bottom: 20px;
+
+  align-self: flex-start;
+
+  transition: background 0.15s ease;
+}
+
+.botao-fechar:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ---------- Confirmação ---------- */
+
+.confirm-mensagem {
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+}
+
+.confirm-botoes {
+  display: flex;
+  gap: 12px;
+}
+
+.confirm-botoes .botao-fechar {
+  flex: 1;
+  margin-bottom: 0;
+  justify-content: center;
+  text-align: center;
+}
+
+.botao-confirmar-excluir {
+  flex: 1;
+
+  background: var(--danger);
+  color: #fff;
+
+  border: none;
+
+  padding: 10px;
+
+  border-radius: 6px;
+
+  font-weight: 600;
+}
+
+.botao-confirmar-excluir:hover {
+  background: #d43f3f;
+}
+
+/* ---------- Progressão ---------- */
+
+.campos-progressao {
+  display: flex;
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.campos-progressao input {
+  width: 100%;
+
+  background: rgba(255, 255, 255, 0.05);
+
+  border: 1px solid var(--border);
+
+  color: var(--fg);
+
+  border-radius: 6px;
+
+  padding: 6px;
+
+  font-size: 0.75rem;
+}
+
+.progressao {
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin: 8px 0;
+}
+
+.botao-editar {
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1px solid var(--border-strong);
+
+  color: var(--fg);
+
+  padding: 6px 12px;
+
+  border-radius: 6px;
+
+  font-size: 0.8rem;
+
+  margin-top: 4px;
+}
+
+.botao-editar:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.label-campo {
+  display: block;
+
+  font-size: 0.75rem;
+
+  color: var(--muted);
+
+  margin-bottom: 4px;
+}
+
+/* ---------- Responsividade ---------- */
+
+/* Tablet */
+
+@media (max-width: 768px) {
+  main {
+    padding: 32px 20px 60px;
+  }
+
+  .lista-treinos,
+  .lista-grupos,
+  .lista-exercicios {
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+    gap: 14px;
+  }
+}
+
+/* Celular */
+
+@media (max-width: 480px) {
+  main {
+    padding: 28px 16px 60px;
+  }
+
+  .app-header {
+    padding: 16px;
+  }
+
+  .lista-treinos,
+  .lista-grupos,
+  .lista-exercicios {
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+    gap: 12px;
+  }
+
+  .treino-card,
+  .grupo-card,
+  .exercicio-card,
+  .card-adicionar {
+    min-height: 150px;
+    padding: 16px;
+  }
+
+  .treino-card h2,
+  .grupo-card h2 {
+    font-size: 0.95rem;
+  }
+
+  .treino-card p {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 340px) {
+  .lista-treinos,
+  .lista-grupos,
+  .lista-exercicios {
+    grid-template-columns: 1fr;
+  }
+}
