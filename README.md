@@ -10,8 +10,8 @@ Projeto desenvolvido como atividade prática (hackathon de 8h) do módulo de Rea
 
 | | |
 |---|---|
-| **Repositório** | [adicionar link do GitHub aqui] |
-| **Aplicação publicada** | [adicionar link da Vercel aqui] |
+| **Repositório** | [github.com/victormourahs/sistemaAcademia](https://github.com/victormourahs/sistemaAcademia) |
+| **Aplicação publicada** | [nome-do-seu-app.vercel.app](https://nome-do-seu-app.vercel.app) |
 
 ---
 
